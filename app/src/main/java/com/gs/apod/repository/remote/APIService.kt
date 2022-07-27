@@ -1,0 +1,17 @@
+package com.gs.apod.repository.remote
+
+//import com.gs.apod.repository.model.Image
+import com.gs.apod.repository.local.tables.Images
+import io.reactivex.rxjava3.core.Single
+import retrofit2.Call
+import retrofit2.Response
+import retrofit2.http.GET
+import retrofit2.http.Query
+
+interface APIService {
+    @GET("apod?thumbs=true")
+    fun getTodaysAPOD() : Single<Response<Images>>
+
+    @GET("apod?")
+    fun getAPOD(@Query("date") date : String) : Single<Response<Images>>
+}
